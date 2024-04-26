@@ -1,0 +1,160 @@
+.site-title{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: -3px;
+}
+form{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+form button{
+    background-color: #ffffff10;
+    border: 1px solid #ffffff10;
+    border-radius: 4px;
+    color: #ffffff;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+}
+form button:hover{
+    background-color: transparent;
+}
+.search-string{
+    margin: 0 auto;
+    text-align: center;
+    width: 850px;
+    font-size: 16px;
+    opacity: 0.9;
+    letter-spacing: 1.5px;
+    font-weight: 300;
+    margin-top: -10px;
+}
+.boolean-title{
+    margin-top: 20px;
+    font-family: 'playfair';
+    font-size: 20px;
+    color: #98ffb0;
+}
+.searched-technologies{
+    display: flex;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+}
+.results-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    height: 60px;
+    background-color: #ffffff05;
+    font-family: 'playfair';
+    letter-spacing: 1.5px;
+    color: #ffffff90;
+}
+.company{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 950px;
+    height: 60px;
+    background-color: #ffffff10;
+    transition: transform 0.2s;
+}
+.company:hover{
+    transform: scale(1.025);
+}
+.company:nth-child(odd) {
+    background-color: #ffffff05;
+}
+.company:nth-child(even) {
+    background-color: #0d1117;
+}
+.company-title{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #e6e6e6;
+    gap: 20px;
+    margin-left: 20px;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ffffff20;
+    border-radius: 5px;
+    background-color: #ffffff;
+    opacity: 0.9;
+}
+.company img{
+    max-height: 85%;
+    max-width: 85%;
+    border-radius: 2px;
+
+}
+.company a{
+    text-decoration: none;
+    color: #e6e6e6;
+}
+.buttons{
+    display: flex;
+    gap: 20px;
+    margin-right: 20px;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #ffffff20;
+    background-color: #0d1117;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.view-stack{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #ffffff20;
+    background-color: #0d1117;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #ffffff05;
+}
+.view-stack:hover{
+    background-color: #ffffff05;
+}
+.pagination{
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+.pagination a{
+    text-decoration: none;
+    color: white;
+}
+.pagination .btn{
+    background-color: #ffffff10;
+}
+.pagination .btn:hover{
+    background-color: transparent;
+}

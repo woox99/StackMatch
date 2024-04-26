@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackMatch</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'assets/icon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/selection.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="fixed">
+            <div class="site-title">
+                <span class="s">S</span><span class="t">t</span><span class="a">a</span><span class="c">c</span><span
+                    class="k">k</span>Match
+            </div>
+            <p class="instructions">FIND COMPANIES THAT MATCH YOUR STACK:</p>
+            <div class="boolean">
+                <div class="bool-box bool-1" data-box-number="0" onclick="selectBoolBox(this)">
+                    <p class="placeholder-text">Select technologies..</p>
+                </div>
+                <p class="and">AND</p>
+                <div class="bool-box" data-box-number="1" onclick="selectBoolBox(this)"></div>
+                <p class="and">AND</p>
+                <div class="bool-box" data-box-number="2" onclick="selectBoolBox(this)"></div>
+                <p class="and">AND</p>
+                <div class="bool-box" data-box-number="3" onclick="selectBoolBox(this)"></div>
+                <p class="and">AND</p>
+                <div class="bool-box" data-box-number="4" onclick="selectBoolBox(this)"></div>
+                <input type="submit" class="submit-btn" value="SEND" onclick="submitForm()">
+            </div>
+        </div>
+        <div class="categories">
+            <form id="selectForm" action="/results" method="POST">
+                {% csrf_token %}
+                <div class="languages category" onclick="toggleExpand(this)">
+                    <div class="language-title category-title">
+                        <i class="fa-solid fa-server"></i>
+                        <p>LANGUAGES</p>
+                    </div>
+                    <div class="selection">
+                        {% for language in languages %}
+                        <div class="input">
+                            <input type="checkbox" id="{{language.id}}" name="{{language.name}}" value=""
+                                onclick="toggleSelect(this, 'language')">
+                            <label for="{{language.id}}" data-label="{{language.name}}">{{language.name}}</label><br>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="databases category" onclick="toggleExpand(this)">
+                    <div class="database-title category-title">
+                        <i class="fa-solid fa-database"></i>
+                        <p>DATABASES</p>
+                    </div>
+                    <div class="selection">
+                        {% for database in databases %}
+                        <div class="input">
+                            <input type="checkbox" id="{{database.id}}" name="{{database.name}}" value=""
+                                onclick="toggleSelect(this, 'database')">
+                            <label for="{{database.id}}" data-label="{{database.name}}">{{database.name}}</label><br>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="frameworks category" onclick="toggleExpand(this)">
+                    <div class="framework-title category-title">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                        <p>FRAMEWORKS</p>
+                    </div>
+                    <div class="selection">
+                        {% for framework in frameworks %}
+                        <div class="input">
+                            <input type="checkbox" id="{{framework.id}}" name="{{framework.name}}" value=""
+                                onclick="toggleSelect(this, 'framework')">
+                            <label for="{{framework.id}}" data-label="{{framework.name}}">{{framework.name}}</label><br>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="libraries category" onclick="toggleExpand(this)">
+                    <div class="library-title category-title">
+                        <i class="fa-solid fa-box"></i>
+                        <p>LIBRARIES</p>
+                    </div>
+                    <div class="selection">
+                        {% for library in libraries %}
+                        <div class="input">
+                            <input type="checkbox" id="{{library.id}}" name="{{library.name}}" value=""
+                                onclick="toggleSelect(this, 'library')">
+                            <label for="{{library.id}}" data-label="{{library.name}}">{{library.name}}</label><br>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="services category" onclick="toggleExpand(this)">
+                    <div class="service-title category-title">
+                        <i class="fa-solid fa-cloud"></i>
+                        <p>SERVICES</p>
+                    </div>
+                    <div class="selection">
+                        {% for service in services %}
+                        <div class="input">
+                            <input type="checkbox" id="{{service.id}}" name="{{service.name}}" value=""
+                                onclick="toggleSelect(this, 'service')">
+                            <label for="{{service.id}}" data-label="{{service.name}}">{{service.name}}</label><br>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="foot">
+        <div>
+            <div class="group">
+                <i class="fa-brands fa-linkedin"></i>
+                <p>Connect with me</p>
+            </div>
+            <p class="link"><a href="https://www.linkedin.com/in/woox99/" target="_blank">Follow</a> me on LinkedIn</p>
+        </div>
+        <div>
+            <div class="group">
+                <i class="fa-solid fa-envelope"></i>
+                <p>Support</p>
+            </div>
+            <p class="link"><a href="https://woox99.github.io/Portfolio#contact-section" target="_blank">Report</a> an
+                issue</p>
+        </div>
+        <div>
+            <div class="group">
+                <i class="fa-brands fa-github"></i>
+                <p>Source Code</p>
+            </div>
+            <p class="link"><a href="https://github.com/woox99/StackMatch" target="_blank">Github</a> or it didn't
+                happen</p>
+        </div>
+        <p class="copyright">© 2024 StackMatch</p>
+    </div>
+
+    <script src="{% static 'js/selection.js' %}"></script>
+</body>
+
+</html>

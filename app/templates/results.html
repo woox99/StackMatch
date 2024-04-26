@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackMatch</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'assets/icon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/results.css' %}">
+</head>
+
+<body>
+    <form action="/">
+        <button type="submit">
+            <i class="fa-solid fa-left-long"></i>
+            RESET
+        </button>
+    </form>
+    <div class="site-title">
+        <span class="s">S</span><span class="t">t</span><span class="a">a</span><span class="c">c</span><span
+            class="k">k</span>Match
+    </div>
+    <div class="search-string">
+        <p class="boolean-title">BOOLEAN OPERATORS:</p>
+        <p>{{search_string}}</p>
+    </div>
+    
+    <!-- Companies -->
+    <div class="main">
+        <div class="companies">
+            <div class="results-title">
+                <p>{{company_count}} COMPANIE(S) MATCHING THIS STACK</p>
+            </div>
+            {% for company in companies %}
+            <div class="company">
+                <a href="{{company.url}}" class="company-title" target="_blank">
+                    <div class="logo">
+                        <img src="{{company.logourl}}" alt="">
+                    </div>
+                    <p>{{company.name}}</p>
+                </a>
+                <div class="buttons">
+                    <!-- <a href="">
+                        <div class="view-stack">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                    </a> -->
+                    <a href="{{company.url}}/jobs" target="_blank">
+                        <div class="btn">JOBS</div>
+                    </a>
+                    <a href="{{company.url}}" target="_blank">
+                        <div class="btn">PROFILE</div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination controls -->
+        <div class="pagination">
+            {% if companies.has_previous %}
+            <div class="btn">
+                <a href="1">&laquo; First</a>
+            </div>
+            <div class="btn">
+                <a href="{{ companies.previous_page_number }}">Previous</a>
+            </div>
+            {% endif %}
+            <span class="current">Page {{ companies.number }} of {{ companies.paginator.num_pages }}.</span>
+            {% if companies.has_next %}
+            <div class="btn">
+                <a href="{{ companies.next_page_number }}">Next</a>
+            </div>
+            <div class="btn">
+                <a href="{{ companies.paginator.num_pages }}">Last &raquo;</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+        <!-- Footer -->
+        <div class="foot">
+            <div>
+                <div class="group">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <p>Connect with me</p>
+                </div>
+                <p class="link"><a href="https://www.linkedin.com/in/woox99/" target="_blank">Follow</a> me on LinkedIn</p>
+            </div>
+            <div>
+                <div class="group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>Support</p>
+                </div>
+                <p class="link"><a href="https://woox99.github.io/Portfolio#contact-section" target="_blank">Report</a> an issue</p>
+            </div>
+            <div>
+                <div class="group">
+                    <i class="fa-brands fa-github"></i>
+                    <p>Source Code</p>
+                </div>
+                <p class="link"><a href="https://github.com/woox99/StackMatch" target="_blank">Github</a> or it didn't happen</p>
+            </div>
+            <p class="copyright">© 2024 StackMatch</p>
+        </div>
+
+</body>
+
+</html>
